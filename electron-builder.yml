@@ -1,0 +1,42 @@
+appId: com.pyzit.desktop
+productName: Pyzit
+files:
+  - "src/**/*"
+  - "!**/*.map"
+directories:
+  output: "dist"
+  buildResources: "build"
+asar: true
+
+# Where the icons live
+mac:
+  icon: build/icons/icon.icns
+  target:
+    - dmg
+    - zip
+  category: public.app-category.productivity
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  entitlements: null
+  entitlementsInherit: null
+win:
+  icon: build/icons/icon.ico
+  target:
+    - nsis
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+linux:
+  icon: build/icons/icon.png
+  category: Utility
+  target:
+    - AppImage
+    - deb
+
+publish:
+  - provider: github
+    owner: pyzit
+    repo: pyzit-desktop

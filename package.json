@@ -1,0 +1,22 @@
+{
+  "name": "pyzit-desktop",
+  "version": "1.0.0",
+  "description": "Official desktop wrapper for pyzit.com",
+  "license": "MIT",
+  "author": "Wajahat Murtaza",
+  "main": "src/main.js",
+  "scripts": {
+    "dev": "electron .",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux",
+    "build:all": "electron-builder -mwl"
+  },
+  "devDependencies": {
+    "electron": "^37.3.1",
+    "electron-builder": "^26.0.12"
+  },
+  "dependencies": {
+    "electron-updater": "^6.6.2"
+  }
+}
