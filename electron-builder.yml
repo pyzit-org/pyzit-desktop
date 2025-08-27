@@ -36,7 +36,4 @@ linux:
     - AppImage
     - deb
 
-publish:
-  - provider: github
-    owner: pyzit
-    repo: pyzit-desktop
+publish: never
