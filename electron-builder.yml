@@ -35,3 +35,5 @@ linux:
   target:
     - AppImage
     - deb
+
+publish: false
