@@ -7,9 +7,9 @@
   "main": "src/main.js",
   "scripts": {
     "dev": "electron .",
-    "build:win": "electron-builder --win",
-    "build:mac": "electron-builder --mac",
-    "build:linux": "electron-builder --linux",
+    "build:win": "electron-builder --win --publish=never",
+    "build:mac": "electron-builder --mac --publish=never",
+    "build:linux": "electron-builder --linux --publish=never",
     "build:all": "electron-builder -mwl",
     "dist": "electron-builder"
   },
