@@ -53,6 +53,9 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            dist/**/*
+            dist/**/*.exe
+            dist/**/*.deb
+            dist/**/*.AppImage
+            dist/**/*.dmg
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
