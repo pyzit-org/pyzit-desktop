@@ -35,5 +35,3 @@ linux:
   target:
     - AppImage
     - deb
-
-publish: never
