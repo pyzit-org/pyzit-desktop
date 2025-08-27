@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Official desktop wrapper for pyzit.com",
   "license": "MIT",
-  "author": "Wajahat Murtaza",
+  "author": "Wajahat Murtaza <contact@pyzit.com>",
   "main": "src/main.js",
   "scripts": {
     "dev": "electron .",
