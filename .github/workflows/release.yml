@@ -53,7 +53,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            dist/**/Pyzit.Setup.*.exe
+            dist/**/Pyzit Setup *.exe
             dist/**/*.deb
             dist/**/*.AppImage
             dist/**/*.dmg
