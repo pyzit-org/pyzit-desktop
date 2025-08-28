@@ -1,0 +1,28 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "pyzit",
+      "name": "Wajahat Murtaza",
+      "avatar_url": "https://avatars.githubusercontent.com/u/74142472?v=4",
+      "profile": "https://pyzit.com",
+      "contributions": [
+        "infra",
+        "test",
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "pyzit-desktop",
+  "projectOwner": "pyzit-org"
+}
