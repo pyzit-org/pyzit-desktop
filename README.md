@@ -1,6 +1,6 @@
 # Pyzit Desktop
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Official desktop app for [pyzit.com](https://pyzit.com) — packaged with Electron.
@@ -123,6 +123,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://pyzit.com"><img src="https://avatars.githubusercontent.com/u/74142472?v=4?s=100" width="100px;" alt="Wajahat Murtaza"/><br /><sub><b>Wajahat Murtaza</b></sub></a><br /><a href="#infra-pyzit" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/pyzit-org/pyzit-desktop/commits?author=pyzit" title="Tests">⚠️</a> <a href="https://github.com/pyzit-org/pyzit-desktop/commits?author=pyzit" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/im-eman"><img src="https://avatars.githubusercontent.com/u/229098390?v=4?s=100" width="100px;" alt="Eman Fatima"/><br /><sub><b>Eman Fatima</b></sub></a><br /><a href="https://github.com/pyzit-org/pyzit-desktop/commits?author=im-eman" title="Tests">⚠️</a> <a href="https://github.com/pyzit-org/pyzit-desktop/commits?author=im-eman" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
