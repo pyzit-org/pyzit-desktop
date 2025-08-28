@@ -111,7 +111,6 @@ MIT — see [LICENSE](LICENSE)
 <div align="center">
 	<sub>Made with ❤️ by the Pyzit community</sub>
 </div>
-npm run dist
 
 ## Contributors ✨
 
