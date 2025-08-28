@@ -1,4 +1,4 @@
-const { app, BrowserWindow, shell, session } = require('electron');
+const { app, BrowserWindow, shell, session, Menu, ipcMain } = require('electron');
 const path = require('path');
 const { autoUpdater } = require('electron-updater');
 
@@ -17,7 +17,7 @@ function createWindow () {
     minWidth: 900,
     minHeight: 600,
     backgroundColor: '#0b0b0b',
-    autoHideMenuBar: true,
+    autoHideMenuBar: true, // keep menu hidden
     icon: path.join(__dirname, '..', 'build', 'icons', process.platform === 'win32' ? 'icon.ico' : 'icon.png'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
@@ -28,24 +28,34 @@ function createWindow () {
     }
   });
 
-  // Security: lock navigation to allowed domains
+  // Allowed hosts
   const allowedHosts = new Set([
     'pyzit.com',
-    'www.pyzit.com'
+    'www.pyzit.com',
+    'invoice.pyzit.com',
+    'convertio.pyzit.com',
+    'og.pyzit.com',
+    'meta.pyzit.com',
+    'code.pyzit.com',
+    'devkit.pyzit.com',
+    'crypto.pzit.com',
+    'pycrypt.pyzit.com'
   ]);
 
+  // Open allowed hosts in same window
   win.webContents.setWindowOpenHandler(({ url }) => {
     try {
       const parsed = new URL(url);
       if (allowedHosts.has(parsed.hostname)) {
-        return { action: 'allow' };
+        win.loadURL(url);
+        return { action: 'deny' };
       }
     } catch {}
-    // Open external links in default browser
     shell.openExternal(url);
     return { action: 'deny' };
   });
 
+  // Block external navigation
   win.webContents.on('will-navigate', (e, url) => {
     try {
       const { hostname } = new URL(url);
@@ -58,7 +68,7 @@ function createWindow () {
     }
   });
 
-  // Optional: custom UA so your backend can detect desktop app (if ever needed)
+  // Set custom User Agent
   const customUA = `${win.webContents.getUserAgent()} PyzitDesktop/${app.getVersion()}`;
   session.defaultSession.webRequest.onBeforeSendHeaders((details, callback) => {
     details.requestHeaders['User-Agent'] = customUA;
@@ -69,10 +79,47 @@ function createWindow () {
   return win;
 }
 
-app.on('ready', async () => {
-  createWindow();
+app.on('ready', () => {
+  const win = createWindow();
 
-  // Optional: Auto-updates from GitHub Releases
+  // Handle reload from preload
+  ipcMain.on('reload-page', () => {
+    const focused = BrowserWindow.getFocusedWindow();
+    if (focused) focused.webContents.reload();
+  });
+
+  // Handle custom context menu
+  ipcMain.on('show-context-menu', () => {
+    const win = BrowserWindow.getFocusedWindow();
+    if (!win) return;
+
+    const template = [
+      {
+        label: 'Reload',
+        click: () => win.webContents.reload()
+      },
+      {
+        label: 'Back',
+        enabled: win.webContents.canGoBack(),
+        click: () => win.webContents.goBack()
+      },
+      {
+        label: 'Forward',
+        enabled: win.webContents.canGoForward(),
+        click: () => win.webContents.goForward()
+      },
+      { type: 'separator' },
+      {
+        label: 'Inspect Element',
+        click: () => win.webContents.openDevTools({ mode: 'detach' })
+      }
+    ];
+
+    const menu = Menu.buildFromTemplate(template);
+    menu.popup({ window: win });
+  });
+
+  // Auto-update
   autoUpdater.autoDownload = true;
   autoUpdater.checkForUpdatesAndNotify();
 });
@@ -86,7 +133,6 @@ app.on('second-instance', () => {
 });
 
 app.on('window-all-closed', () => {
-  // On macOS keep app alive until Cmd+Q
   if (process.platform !== 'darwin') app.quit();
 });
 
